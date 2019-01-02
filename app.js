@@ -1,11 +1,32 @@
-console.log('Starting app.js');
+const yargs = require('yargs');
 
-const fs = require('fs');
-const os = require('os');
-const notes = require('./notes.js');
+const geocode = require('./geocode/geocode');
+const weather = require('./weather/weather');
 
-console.log('Result:', notes.add(9, -2));
+const argv = yargs
+  .options({
+    a: {
+      demand: true,
+      alias: 'address',
+      describe: 'Address to fetch weather for',
+      string: true
+    }
+  })
+  .help()
+  .alias('help', 'h')
+  .argv;
 
-// var user = os.userInfo();
-//
-// fs.appendFile('greetings.txt', `Hello ${user.username}! You are ${notes.age}.`);
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
+  if (errorMessage) {
+    console.log(errorMessage);
+  } else {
+    console.log(results.address);
+    weather.getWeather(results.latitude, results.longitude, (errorMessage, weatherResults) => {
+      if (errorMessage) {
+        console.log(errorMessage);
+      } else {
+        console.log(`It's currently ${weatherResults.temperature}. It feels like ${weatherResults.apparentTemperature}.`);
+      }
+    });
+  }
+});
