@@ -1,10 +1,22 @@
-const http = require('http');
 
-var port = process.env.PORT || 8070;
+const port = process.env.PORT || 8070;
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.write('Hello World! ksk2323sksks');
-    res.end();
-  }).listen(port);
+// http.createServer(function (req, res) {
+//     res.writeHead(200, {'Content-Type': 'text/plain'});
+//     res.write('Hello World! ksk2323sksks');
+//     res.end();
+//   }).listen(port);
+
+
+  const express = require('express');
+  const app = express();
+
+  app.use(express.static('public'))
+
+
+// app.get('/', (req, res, next) => {
+//   res.render('Hello World! ksk2323sksks');
+// })
+
+  app.listen(port);
 
