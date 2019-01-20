@@ -1,0 +1,1 @@
+body,html{height:100%}body{background:#e2aab6}#app{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-align:center;color:#2c3e50}#nav{padding:30px}#nav a{font-weight:700;color:#2c3e50}#nav li{display:inline-block;cursor:pointer;padding:0 10px}#nav li.router-link-exact-active,#nav li:hover{color:#209cee}
