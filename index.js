@@ -58,7 +58,11 @@ app.post('/process-contact',(req, res, next) => {
     auth: {
       user: 'melvinsalmat@gmail.com',
       pass: 'services-123'
-    }
+    },
+    tls: {
+      // do not fail on invalid certs
+      rejectUnauthorized: false
+  }
   });
   
   const mailOptions = {
