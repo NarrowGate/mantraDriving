@@ -52,7 +52,7 @@ app.post('/process-contact',(req, res, next) => {
 
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
     auth: {
       user: 'melvinsalmat@gmail.com',
       pass: 'services-123'
