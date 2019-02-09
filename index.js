@@ -52,21 +52,35 @@ app.post('/process-contact',(req, res, next) => {
 
 
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+
+    // auth: {
+    //   user: 'vyneyardz@yahoo.com',
+    //   pass: 'audioslave'
+    // }
+
+    // host: "smtp.yahoo.com", // hostname
+    // secureConnection: true, // use SSL
+    // port: 465, // port for secure SMTP
+
+
+    service: 'Yahoo',
     auth: {
-      user: 'melvinsalmat@gmail.com',
-      pass: 'services-123'
-    },
-    tls: {
-      // do not fail on invalid certs
-      rejectUnauthorized: false
-  }
+      user: 'vyneyardz@yahoo.com',
+      pass: 'audioslave'
+    }
+
+
+
+    // service: 'gmail',
+    // auth: {
+    //   user: 'melvinsalmat@gmail.com',
+    //   pass: 'services-123'
+    // }
   });
   
   const mailOptions = {
-    from: 'melvinsalmat@gmail.com',
+     from: 'vyneyardz@yahoo.com',
+    // from: 'melvinsalmat@gmail.com',
     to: 'wilsonlifecycle@gmail.com',
     subject: 'A new enquiry for Mantra Driving School',
     html: subjectForEmail
@@ -74,9 +88,9 @@ app.post('/process-contact',(req, res, next) => {
   
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
-      //console.log(error);
+      console.log(error);
     } else {
-      //console.log('Email sent: ' + info.response);
+      console.log('Email sent: ' + info.response);
     }
   });
 
