@@ -53,6 +53,8 @@ app.post('/process-contact',(req, res, next) => {
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
       user: 'melvinsalmat@gmail.com',
       pass: 'services-123'
